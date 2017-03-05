@@ -9,7 +9,7 @@ class Todo extends React.Component{
 			<div className="todo">
 				<TodoForm addTodo={this.props.addTodo}></TodoForm>
 				<TodoList {...this.props}></TodoList>
-				<Footer></Footer>
+				<Footer {...this.props}></Footer>
 			</div>
 		)
 	}

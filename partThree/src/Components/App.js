@@ -1,4 +1,4 @@
-import React,{ Components, PropTypes } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 
 const root = document.getElementById('root');

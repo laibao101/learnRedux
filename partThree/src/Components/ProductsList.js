@@ -6,7 +6,7 @@ export default class ProductsList extends Component{
 		const { children, name } = this.props;
 		return (
 			<div className="product-list">
-				<h3>{title}</h3>
+				<h3>{name}</h3>
 				<div>{children}</div>
 			</div>
 		);

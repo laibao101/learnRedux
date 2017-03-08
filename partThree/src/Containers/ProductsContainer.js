@@ -1,18 +1,27 @@
 import React,{ Component } from 'react';
 import ProductsList from '../Components/ProductsList';
 import ProductItem from '../Components/ProductItem';
+import { connect } from 'react-redux';
+import * as actionCreators from '../Actions';
+import { bindActionCreators } from 'redux';
 
-
-
-export default class ProductsList extends Component{
+class ProductsContainer extends Component{
 	render(){
-		const { products } = this.props;
+		const { products, addToCart } = this.props;
 		return (
-			<ProductsList>
+			<ProductsList name="Products">
 				{products.map(product => {
-					return <ProductItem {...product}></ProductItem>
+					return <ProductItem key={product.id} {...product} addToCart={addToCart}></ProductItem>
 				})}
 			</ProductsList>
 		);
 	}
 }
+
+const mapStateToProps = state => ({
+  products: state.products
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators(actionCreators,dispatch);
+
+export default connect(mapStateToProps,mapDispatchToProps)(ProductsContainer)

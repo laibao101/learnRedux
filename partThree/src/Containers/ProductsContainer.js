@@ -8,11 +8,10 @@ import { bindActionCreators } from 'redux';
 class ProductsContainer extends Component{
 	render(){
 		const { products, addToCart } = this.props;
+		console.log('product render');
 		return (
 			<ProductsList name="Products">
-				{products.map(product => {
-					return <ProductItem key={product.id} {...product} addToCart={addToCart}></ProductItem>
-				})}
+				{products.map(product =><ProductItem key={product.id} {...product} addToCart={addToCart}></ProductItem>)}
 			</ProductsList>
 		);
 	}

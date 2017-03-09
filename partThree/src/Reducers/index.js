@@ -9,24 +9,14 @@ export default function rootReducer (state={},action) {
 			const index = products.findIndex(product => product.id === id);
 			const product = products.find(product => product.id === id);
 			const newProducts = [...products];
-			newProducts[index] = excProducts(product,action);
+			newProducts[index] = {
+				...product,
+				num:product.num-1
+			}
 			return {
 				products:newProducts
 			}
 		default:
 			return state;
 	}
-}
-
-
-const excProducts = (state, action) => {
-  switch (action.type) {
-    case ActionTypes.ADD_TO_CART:
-      return {
-        ...state,
-        num: state.num - 1
-      }
-    default:
-      return state
-  }
 }

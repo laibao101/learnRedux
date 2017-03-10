@@ -16,6 +16,9 @@ export default function rootReducer (state={},action) {
 			return {
 				products:newProducts
 			}
+		case ActionTypes.CHECKOUT:
+			console.log('CHECKOUT');
+			return state;
 		default:
 			return state;
 	}

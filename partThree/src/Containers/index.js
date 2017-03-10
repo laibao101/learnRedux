@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import ProductsContainer from './ProductsContainer';
-
+import CartContainer from './CartContainer';
 
 
 class App extends Component{
@@ -9,6 +9,7 @@ class App extends Component{
 			<div className="app">
 				<h1 className="shop-cart">shopping cart</h1>
 				<ProductsContainer></ProductsContainer>
+				<CartContainer></CartContainer>
 			</div>
 		);
 	}

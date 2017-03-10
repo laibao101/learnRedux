@@ -20,7 +20,8 @@ const defaultState = {
 			num:10,
 			price:99
 		}
-	]
+	],
+	carts:[]
 }
 
 

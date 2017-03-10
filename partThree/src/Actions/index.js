@@ -6,3 +6,10 @@ export function addToCart (id) {
 		id
 	}
 }
+
+
+export function checkout () {
+	return {
+		type:ActionTypes.CHECKOUT
+	}
+}

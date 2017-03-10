@@ -8,7 +8,7 @@ class CartContainer extends Component{
 	render(){
 		const { carts, checkout } = this.props;
 		return (
-			<CartList name="Your Cart" checkout={checkout}>
+			<CartList name="Your Cart" checkout={checkout} status={carts.length}>
 				{carts.length === 0 ? <h4>Please add some products to cart.</h4> : carts.map(cart => <CartItem key={cart.id} {...cart} ></CartItem>)}
 			</CartList>
 		);

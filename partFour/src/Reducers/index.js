@@ -3,7 +3,9 @@ import { REACT_JS } from '../ActionTypes';
 export default function rootReducer(state=[],action) {
 	switch (action.type) {
 		case REACT_JS:
-			console.log('react js');
+			return {
+				news:action.data
+			}
 			return state;
 		default:
 		return state;

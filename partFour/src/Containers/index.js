@@ -7,21 +7,34 @@ import * as ActionCreators from '../Actions';
 import { bindActionCreators } from 'redux';
 
 class Container extends Component{
+
+	constructor(props){
+		super(props);
+		this.fetchReactjs = props.fetchReactjs;
+		this.handleChange = this.handleChange.bind(this);
+	}
+
 	render(){
-		const { news } = this.props;
+		const news = this.props.news || [];
 		const time = new Date().getTime();
 		return (
 			<div className="container">
 				<h1>reactjs</h1>
-				<Select></Select>
+				<Select onChange={this.handleChange} options={[ 'reactjs', 'frontend' ]}></Select>
 				<News>
 					{'Last updated at'}
 					{time}
 					<a href="#">Refresh</a>
-					{news.length === 0 ? <h3>no News</h3> : news.map(item => <NewsItem key={item.id} {...item}></NewsItem>)}
+					{news.length === 0 ? <h3>no News</h3> : news.map(item => <NewsItem key={item.data.id} {...item}></NewsItem>)}
 				</News>
 			</div>
 		);
+	}
+
+
+
+	handleChange(value){
+		this.fetchReactjs(value)
 	}
 }
 

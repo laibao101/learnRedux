@@ -5,21 +5,28 @@ import Select from '../Components/Select';
 import { connect } from 'react-redux';
 import * as ActionCreators from '../Actions';
 import { bindActionCreators } from 'redux';
+import { fetchReactjs } from '../Actions';
 
 class Container extends Component{
 
 	constructor(props){
 		super(props);
-		this.fetchReactjs = props.fetchReactjs;
 		this.handleChange = this.handleChange.bind(this);
+	}
+
+	componentDidMount(){
+		const { dispatch } = this.props;
+		dispatch(fetchReactjs('reactjs'));
+		console.log('react js did mount');
 	}
 
 	render(){
 		const news = this.props.news || [];
+		const { title } = this.props;
 		const time = new Date().getTime();
 		return (
 			<div className="container">
-				<h1>reactjs</h1>
+				<h1>{title}</h1>
 				<Select onChange={this.handleChange} options={[ 'reactjs', 'frontend' ]}></Select>
 				<News>
 					{'Last updated at'}
@@ -31,20 +38,21 @@ class Container extends Component{
 		);
 	}
 
-
-
 	handleChange(value){
-		this.fetchReactjs(value)
+		const { dispatch } = this.props;
+		console.log(value);
+		dispatch(fetchReactjs(value));
 	}
 }
 
 
  const mapStateToProps = state => {
 	 return {
-		 news:state.news
+		 news:state.news,
+		 title:state.title
 	 }
  }
 
  const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators,dispatch);
 
-export default connect(mapStateToProps,mapDispatchToProps)(Container);
+export default connect(mapStateToProps)(Container);

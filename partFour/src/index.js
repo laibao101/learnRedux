@@ -5,13 +5,14 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './Containers';
 import rootReducer from './Reducers';
 import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 
 const defaultState = {
 	news:[]
 }
 
-const middleware = [ thunk ]
+const middleware = [ thunk, logger() ]
 
 const store = createStore(rootReducer,applyMiddleware(...middleware))
 

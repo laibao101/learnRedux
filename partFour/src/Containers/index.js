@@ -12,26 +12,28 @@ class Container extends Component{
 	constructor(props){
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
+		this.handelRefresh = this.handelRefresh.bind(this);
 	}
 
 	componentDidMount(){
 		const { dispatch } = this.props;
 		dispatch(fetchReactjs('reactjs'));
-		console.log('react js did mount');
 	}
 
 	render(){
 		const news = this.props.news || [];
 		const { title } = this.props;
-		const time = new Date().getTime();
+		const time = new Date().toLocaleTimeString();
 		return (
 			<div className="container">
 				<h1>{title}</h1>
 				<Select onChange={this.handleChange} options={[ 'reactjs', 'frontend' ]}></Select>
 				<News>
 					{'Last updated at'}
+					{' '}
 					{time}
-					<a href="#">Refresh</a>
+					{' '}
+					<a href="#" onClick={this.handelRefresh}>Refresh</a>
 					{news.length === 0 ? <h3>no News</h3> : news.map(item => <NewsItem key={item.data.id} {...item}></NewsItem>)}
 				</News>
 			</div>
@@ -40,8 +42,12 @@ class Container extends Component{
 
 	handleChange(value){
 		const { dispatch } = this.props;
-		console.log(value);
 		dispatch(fetchReactjs(value));
+	}
+
+	handelRefresh(){
+		const { dispatch, title } = this.props;
+		dispatch(fetchReactjs(title));
 	}
 }
 

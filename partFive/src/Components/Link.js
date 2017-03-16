@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const Link = ({active,children,onClick}) => {
+const Link = ({active,children,setVisibilityFilter, filter}) => {
 	if (active) {
 		return <span>{children}</span>;
 	}
@@ -9,7 +9,7 @@ const Link = ({active,children,onClick}) => {
 		<a href="#"
 			onClick={ e => {
 				e.preventDefault();
-				onClick();
+				setVisibilityFilter(filter);
 			}}
 			>
 			{children}
@@ -20,7 +20,7 @@ const Link = ({active,children,onClick}) => {
 Link.PropTypes = {
 	active:PropTypes.bool.isRequired,
 	children:PropTypes.node.isRequired,
-	onClick:PropTypes.func.isRequired
+	setVisibilityFilter:PropTypes.func.isRequired
 }
 
 export default Link;

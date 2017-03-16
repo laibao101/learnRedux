@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 
-export default Todo = ({ onClick, completed, text }) => {
-	<li className="todo"
-		style={{textDecoration: completed ? 'line-through' : 'none' }}
-		onClick={onClick}
-		>
-		{text}
-	</li>
+const Todo = ({ onClick, completed, text }) => {
+	return (
+		<li className="todo"
+			style={{textDecoration: completed ? 'line-through' : 'none' }}
+			onClick={()=>{console.log(2222);onClick()}}
+			>
+			{text}
+		</li>
+	)
 }
 
 Todo.PropTypes = {
@@ -14,3 +16,5 @@ Todo.PropTypes = {
 	completed:PropTypes.bool.isRequired,
 	text:PropTypes.string.isRequired
 }
+
+export default Todo;
